@@ -1,3 +1,89 @@
-<h1>
-    Something huge is coming
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ML API - Medical Care Hospital</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .login {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .prediction {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Medical Care Hospital</h1>
+        <form action="{{ url_for('predict_api') }}" method="POST">
+            <!-- Form Fields -->
+            {% for field in [
+                'mean radius', 'mean texture', 'mean perimeter', 'mean area', 'mean smoothness',
+                'mean compactness', 'mean concavity', 'mean concave points', 'mean symmetry', 'mean fractal dimension',
+                'radius error', 'texture error', 'perimeter error', 'area error', 'smoothness error',
+                'compactness error', 'concavity error', 'concave points error', 'symmetry error', 'fractal dimension error',
+                'worst radius', 'worst texture', 'worst perimeter', 'worst area', 'worst smoothness',
+                'worst compactness', 'worst concavity', 'worst concave points', 'worst symmetry', 'worst fractal dimension'
+            ] %}
+            <label for="{{ field }}">{{ field | capitalize }}:</label>
+            <input type="text" name="{{ field }}" id="{{ field }}" placeholder="{{ field | capitalize }}" required>
+            <br>
+            {% endfor %}
+            
+            <button type="submit">Predict</button>
+        </form>        
+        <div class="prediction">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+
+</html>
