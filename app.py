@@ -1,3 +1,6 @@
+import csv
+import os
+from datetime import datetime
 import pickle
 import numpy as np
 from flask import Flask, request, jsonify, render_template
@@ -39,6 +42,21 @@ def predict_api():
     # Prediction score and result classification
     prediction_score = float(output[0][0])
     result = "Malignant" if prediction_score > 0.5 else "Benign"
+    
+      # Prepare row for logging
+    log_row = data + [prediction_score, result, datetime.now().isoformat()]
+    log_file = 'prediction_logs.csv'
+
+    # If log file doesn't exist, create it with headers
+    if not os.path.exists(log_file):
+        with open(log_file, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(fields + ['prediction_score', 'result', 'timestamp'])
+    
+    # Append data
+    with open(log_file, 'a', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(log_row)
 
     # Returning the prediction in JSON format
     return jsonify({
