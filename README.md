@@ -22,13 +22,13 @@ By streamlining the diagnostic process, this tool contributes to faster, more ac
 
 This project showcases the development and deployment of a machine learning-based web application:
 
-- 🧠 Trained a **Logistic Regression model** on labeled breast cancer data
-- 🤖 Used **deep learning** techniques to enhance model training and achieve an accuracy of **~95%**
-- 🏷️ Classified input as either **benign** or **malignant**
-- 📦 Saved the trained model using `pickle`
-- 🔧 Built a **Flask API** to serve predictions
-- 🎨 Developed a simple **HTML/CSS frontend** for interaction
-- ☁️ **Deployed to Microsoft Azure**, applying modern DevOps practices
+-  Trained a **Logistic Regression model** on labeled breast cancer data
+-  Used **deep learning** techniques to enhance model training and achieve an accuracy of **~95%**
+- 🏷 Classified input as either **benign** or **malignant**
+-  Saved the trained model using `pickle`
+-  Built a **Flask API** to serve predictions
+-  Developed a simple **HTML/CSS frontend** for interaction
+-  **Deployed to Microsoft Azure**, applying modern DevOps practices
 
 ---
 
@@ -41,10 +41,3 @@ This project showcases the development and deployment of a machine learning-base
 - **Deployment:** Microsoft Azure, VS Code
 
 ---
-
-## 📷 Screenshots
-
-> *(Add screenshots of the web interface and prediction results)*  
-You can add:
-```markdown
-![Prediction Result](path/to/screenshot.png)
